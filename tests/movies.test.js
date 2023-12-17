@@ -1,8 +1,13 @@
 import {describe, it, expect} from 'vitest';
-import {turnHoursToMinutes,
-  ratesAverage,
-} from '../movies.js';
+import {turnHoursToMinutes, 
+  ratesAverage, 
+  dramaMoviesRate, 
+  orderByDuration, 
+  howManyMovies, 
+  orderAlphabetically, 
+  bestYearAvg} from '../movies.js';
 import {movies} from '../data.js';
+
 
 describe('Turn duration of the movies - turnHoursToMinutes', function () {
   it('Defines turnHoursToMinutes', function () {
@@ -66,6 +71,10 @@ describe('Get the average rate - ratesAverage', function () {
   it('It should be rounded to nearest hundredths ', function () {
     expect(ratesAverage([{ rate: 8 }, { rate: 9 }, { rate: 9 }])).toBeCloseTo(8.67, 2);
   });
+
+  it('Return Average even if one of the movies does not have rate!', function () {
+    expect(ratesAverage([{rate: 8 }, {rate: '' }])).toBe(4);
+  });  
 });
 
 describe('Average rate of Drama Movies - dramaMoviesRate', function () {
